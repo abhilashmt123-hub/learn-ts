@@ -25,6 +25,8 @@
             ```typescript
             let obj: object = { key: "value" };
             let arr: Array<number> = [1, 2, 3];
+            let arr2: number[] = [4, 5, 6];
+            let arr3: (string | number)[] = ["Hello", 42, "World"];
             let tuple: [string, number] = ["Hello", 42];
             enum Color { Red, Green, Blue }
             let c: Color = Color.Green;
