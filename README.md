@@ -35,8 +35,125 @@ The files in this project are numbered to indicate the learning order:
 - `3.arrays.ts` — arrays, common methods, iteration
 - `4.tuples.ts` — tuples, fixed-length arrays and patterns
 - `5.enums.ts` — numeric, string, and heterogeneous enums
+- `6.if else and ternary operator.ts` — conditional logic with `if/else` and ternary expressions
+- `7.switch case.ts` — `switch` statements and `case` matching
+- `8.loops.ts` — `for`, `for...in`, `for...of`, `while`, and `do...while`
+- `9.functions.ts` — named, anonymous, arrow, optional/default/rest parameters, overloads, and higher-order functions
 
 Below are concise notes and examples you can use to revise each topic.
+
+---
+
+## Conditional Statements
+
+Use `if` and `else` when you need to make a decision based on a condition. TypeScript supports the same control flow patterns as JavaScript.
+
+```typescript
+let age: number = 18;
+
+if (age >= 18) {
+  console.log("You are an adult.");
+} else {
+  console.log("You are a minor.");
+}
+```
+
+The ternary operator is a compact alternative when you want a single expression instead of a full block:
+
+```typescript
+let message: string = age >= 18 ? "Adult" : "Minor";
+console.log(message);
+```
+
+---
+
+## Switch Statements
+
+`switch` is useful when you have a value and want to check it against several possible cases.
+
+```typescript
+let day: string = "Monday";
+
+switch (day) {
+  case "Monday":
+    console.log("Start of the work week");
+    break;
+  case "Saturday":
+  case "Sunday":
+    console.log("Weekend");
+    break;
+  default:
+    console.log("Another day");
+}
+```
+
+The `break` keyword stops the switch after a matching case is executed.
+
+---
+
+## Loops
+
+Loops let you repeat a block of code until a condition changes.
+
+- `for` loops are helpful when you know how many iterations you need.
+- `for...in` loops iterate over object keys.
+- `for...of` loops iterate over array values.
+- `while` loops run as long as a condition stays true.
+- `do...while` always runs at least once before checking the condition.
+
+```typescript
+for (let i = 0; i < 3; i++) {
+  console.log(i);
+}
+
+const nums: number[] = [10, 20, 30];
+for (const num of nums) {
+  console.log(num);
+}
+```
+
+---
+
+## Functions
+
+Functions are reusable blocks of code that can accept parameters and return values.
+
+### Function types
+
+```typescript
+function add(a: number, b: number): number {
+  return a + b;
+}
+
+const multiply = (a: number, b: number): number => a * b;
+```
+
+### Optional, default, and rest parameters
+
+```typescript
+type Greet = (name: string, greeting?: string) => string;
+
+function greet(name: string, greeting: string = "Hello"): string {
+  return `${greeting}, ${name}!`;
+}
+
+function sum(...numbers: number[]): number {
+  return numbers.reduce((total, num) => total + num, 0);
+}
+```
+
+### Higher-order functions
+
+A higher-order function either accepts functions as arguments or returns a function.
+
+```typescript
+function applyOperation(a: number, b: number, operation: (x: number, y: number) => number): number {
+  return operation(a, b);
+}
+
+const result = applyOperation(5, 10, (x, y) => x + y);
+console.log(result); // 15
+```
 
 ---
 
