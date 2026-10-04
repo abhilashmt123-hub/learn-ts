@@ -91,6 +91,36 @@
     
     type AandB = A & B; // Intersection type
     const obj: AandB = { a: "Hello", b: 42 }; // valid
+
+
+    //This is used to combine multiple types into a single type. It allows you to create a new type that can be any one of the specified types. This is particularly useful when you want to allow a variable to hold values of different types, providing flexibility in your code.
+
+//Example:
+```typescript
+type StringOrNumber = string | number;
+
+let value: StringOrNumber;
+
+value = "Hello"; // valid
+console.log(value); // Output: "Hello"
+
+value = 42; // valid
+console.log(value); // Output: 42
+
+// value = true; // Error: Type 'boolean' is not assignable to type 'StringOrNumber'.
+```
+//We can even pass this to a function as a parameter, allowing the function to accept multiple types of arguments.
+//Example:
+```typescript
+function printValue(value: StringOrNumber): void {
+    console.log(value);
+}
+
+printValue("Hello"); // Output: "Hello"
+printValue(42);      // Output: 42
+// printValue(true); // Error: Argument of type 'boolean' is not assignable to parameter of type 'StringOrNumber'.  
+```
+
     ```
 
 6. **Literal Types**: These allow you to specify exact values a variable can hold, providing more precise type checking.
@@ -118,3 +148,13 @@ console.log(add1(5,10));  -- allowed
 console.log(add1('abc','abc')); -- allowed
 console.log(add2(5,10)); -- allowed
 console.log(add2('abc','abc')); -- error
+
+
+7. Type Assertions: TypeScript allows you to override the inferred type of a variable using type assertions. This can be useful when you have more information about the type than TypeScript can infer.
+Example:
+```typescript
+let value: unknown = "Hello";
+let str: string = value as string; // Type assertion
+console.log(str); // Output: "Hello"
+``` 
+This is simply like the type casting in other languages. It tells the compiler to treat a variable as a specific type, even if it cannot be inferred automatically.
